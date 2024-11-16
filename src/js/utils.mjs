@@ -28,3 +28,13 @@ export function getParams(param) {
   const product = params.get('product');
   return product;
 }
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(templateFn);
+  // clear parentElement in case we want to avoid conflicting elements
+  if (clear) {
+    let element = document.querySelectorAll(`${parentElement}`);
+    element.forEach((el) => element.remove());
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+}

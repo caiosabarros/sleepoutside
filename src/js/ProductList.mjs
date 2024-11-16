@@ -1,3 +1,6 @@
+import { renderListWithTemplate } from "./utils.mjs"
+
+
 // This purpose of this script will be to generate a list of product cards in HTML from an array.
 function convertToJson(res) {
   if (res.ok) {
@@ -31,9 +34,13 @@ export default class ProductListing {
   }
 
   async init() {
-    const jsonArray = await this.getData();
-    // render the list - to be completed
-    this.renderList(jsonArray);
+    let jsonArray = await this.getData();
+
+    console.log(jsonArray);
+    jsonArray = jsonArray.filter((tent) => tent.Id !== "989CG" && tent.Id !== "880RT");
+    console.log(jsonArray);
+
+    renderListWithTemplate(productCardTemplate, this.listElement, jsonArray, 'afterbegin', false);
   }
 
   async getData() {
