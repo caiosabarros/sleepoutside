@@ -12,9 +12,9 @@ function convertToJson(res) {
 
 function productCardTemplate(product) {
   let cardElement = `          <li class="product-card">
-          <a href="product_pages/?product=${product.Id}">
+          <a href="../product_pages/?product=${product.Id}">
             <img
-              src="${product.Image}"
+              src="${product.Images.PrimaryMedium}"
               alt="Image of ${product.Name}"
             />
             <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -34,7 +34,7 @@ export default class ProductListing {
   }
 
   async init() {
-    let jsonArray = await this.getData();
+    let jsonArray = await this.dataSource.getData(this.category);
 
     console.log(jsonArray);
     jsonArray = jsonArray.filter((tent) => tent.Id !== "989CG" && tent.Id !== "880RT");
@@ -53,6 +53,4 @@ export default class ProductListing {
     const htmlStrings = list.map(productCardTemplate);
     this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
   }
-
-
 }

@@ -25,7 +25,7 @@ export function setClick(selector, callback) {
 export function getParams(param) {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
-  const product = params.get('product');
+  const product = params.get(param);
   return product;
 }
 
@@ -37,4 +37,21 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
     element.forEach((el) => element.remove());
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+}
+
+async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+// dynamically load the header and footer
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
 }
