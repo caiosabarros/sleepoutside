@@ -39,11 +39,17 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
 
-async function loadTemplate(path) {
-  const res = await fetch(path);
-  const template = await res.text();
+export async function loadTemplate(path) {
+  const html = await fetch(path).then(convertToText);
+  const template = document.createElement('template');
+  template.innerHTML = html;
   return template;
 }
+
+async function convertToText(response){
+  return await response.text();
+}
+
 
 // dynamically load the header and footer
 export async function loadHeaderFooter() {
@@ -54,4 +60,11 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+}
+
+export function renderWithTemplate(template, parent, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if(callback) {
+    callback(data);
+  }
 }

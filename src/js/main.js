@@ -1,5 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import ProductListing from "./ProductList.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 // let productDataInstance = new ProductData("tents");
 // console.log("productDataInstance", productDataInstance);
@@ -9,3 +10,4 @@ import ProductListing from "./ProductList.mjs";
 // console.log("productDataInstance", productDataInstance);
 // productDataInstance.init();
 
+loadHeaderFooter();
