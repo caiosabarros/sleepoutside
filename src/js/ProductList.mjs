@@ -33,10 +33,20 @@ export default class ProductListing {
     this.listElement = listElement;
   }
 
-  async init() {
-    let jsonArray = await this.dataSource.getData(this.category);
+  async init(sort = false, sortByName = false, sortByPrice = false, sortedItems = []) {
+    let jsonArray = []
+    if (!sort) {
+      // getData as is if it there is no sorting
+      jsonArray = await this.dataSource.getData(this.category);
+    } else {
+      // have the sorted displayed
+      jsonArray = sortedItems;
+    }
+
+    this.listElement.innerHTML = ""; // clear the current display to avoid sequential lists
 
     renderListWithTemplate(productCardTemplate, this.listElement, jsonArray, 'afterbegin', false);
+    return jsonArray;
   }
 
   async getData() {
