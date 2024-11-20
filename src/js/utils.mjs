@@ -46,7 +46,7 @@ export async function loadTemplate(path) {
   return template;
 }
 
-async function convertToText(response){
+async function convertToText(response) {
   return await response.text();
 }
 
@@ -62,9 +62,9 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplate, footerElement);
 }
 
-export function renderWithTemplate(template, parent, data, callback) {
+export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.insertAdjacentHTML("afterbegin", template);
-  if(callback) {
+  if (callback) {
     callback(data);
   }
 }

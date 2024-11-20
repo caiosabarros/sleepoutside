@@ -8,7 +8,6 @@ const dataSource = new ProductData();
 
 let listElement = document.querySelector('.product-list');
 
-console.log(category, dataSource, listElement);
 const list = new ProductListing(category, dataSource, listElement);
 
 list.init();

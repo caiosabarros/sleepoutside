@@ -36,10 +36,6 @@ export default class ProductListing {
   async init() {
     let jsonArray = await this.dataSource.getData(this.category);
 
-    console.log(jsonArray);
-    jsonArray = jsonArray.filter((tent) => tent.Id !== "989CG" && tent.Id !== "880RT");
-    console.log(jsonArray);
-
     renderListWithTemplate(productCardTemplate, this.listElement, jsonArray, 'afterbegin', false);
   }
 
