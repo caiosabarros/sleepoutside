@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
@@ -60,6 +60,25 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+      <div id="order-summary">
+        <p>Item Subtotal: <span class="item-subtotal">$0.00</span></p>
+        <p>Shipping: <span class="shipping-cost">$0.00</span></p>
+        <p>Tax: <span class="tax-amount">$0.00</span></p>
+        <p>Total: <span class="order-total">$0.00</span></p>
+      </div>
+      <form id="checkout-form">
+        <input type="text" name="fname" placeholder="First Name" required />
+        <input type="text" name="lname" placeholder="Last Name" required />
+        <input type="text" name="street" placeholder="Street" required />
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="state" placeholder="State" required />
+        <input type="text" name="zip" placeholder="Zip Code" required />
+        <input type="text" name="cardNumber" placeholder="Card Number" required />
+        <input type="text" name="expiration" placeholder="Expiration Date" required />
+        <input type="text" name="code" placeholder="Security Code" required />
+        <button type="submit">Submit Order</button>
+      </form>
+      
     </main>
 
     <footer>&copy;NOT a real business</footer>
