@@ -50,6 +50,17 @@ async function convertToText(response) {
   return await response.text();
 }
 
+export function getSummaryInCart() {
+  const products = getLocalStorage("so-cart");
+  let totalPrice = 0;
+  let totalQuantity = 0;
+  products.forEach((product) => {
+    totalPrice += product.product.FinalPrice * product.quantity;
+    totalQuantity += product.quantity;
+  })
+  return { totalPrice, totalQuantity };
+}
+
 
 // dynamically load the header and footer
 export async function loadHeaderFooter() {
