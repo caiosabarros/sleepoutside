@@ -298,9 +298,13 @@ button {
     display: flex;
     flex-direction: column;
   }
-}
 
-footer {
-  font-size: var(--small-font);
-  padding: 1em;
+  .product-list {
+    gap: 50px;
+  }
+
+  footer {
+    font-size: var(--small-font);
+    padding: 1em;
+  }
 }

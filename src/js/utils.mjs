@@ -29,27 +29,6 @@ export function getParams(param) {
   return product;
 }
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  const htmlStrings = list.map(templateFn);
-  // clear parentElement in case we want to avoid conflicting elements
-  if (clear) {
-    let element = document.querySelectorAll(`${parentElement}`);
-    element.forEach((el) => element.remove());
-  }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
-}
-
-export async function loadTemplate(path) {
-  const html = await fetch(path).then(convertToText);
-  const template = document.createElement('template');
-  template.innerHTML = html;
-  return template;
-}
-
-async function convertToText(response) {
-  return await response.text();
-}
-
 export function getSummaryInCart() {
   const products = getLocalStorage("so-cart");
   let totalPrice = 0;
@@ -61,6 +40,25 @@ export function getSummaryInCart() {
   return { totalPrice, totalQuantity };
 }
 
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(templateFn);
+  // clear parentElement in case we want to avoid conflicting elements
+  if (clear) {
+    let element = document.querySelectorAll(`${parentElement}`);
+    element.forEach((el) => element.remove());
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+}
+
+async function convertToText(response) {
+  return await response.text();
+}
+
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
 
 // dynamically load the header and footer
 export async function loadHeaderFooter() {
