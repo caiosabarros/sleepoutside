@@ -1,6 +1,6 @@
 import {
     getLocalStorage, alertMessage,
-    removeAllAlerts
+    removeAllAlerts, setLocalStorage
 } from "./utils.mjs"
 import ExternalServices from "./ExternalServices.mjs";
 
@@ -109,6 +109,9 @@ export default class CheckoutProcess {
 
         try {
             await services.checkout(json);
+            // clear cart
+            setLocalStorage("so-cart", null);
+            location.assign("/checkout/success.html");
         } catch (err) {
             /*
             {

@@ -16,6 +16,7 @@ document.querySelector('#checkout-submit').addEventListener('click', (e) => {
     if (chk_status) {
         try {
             checkout.checkout();
+
         } catch (error) {
             console.log(error);
             console.log(chk_status, "1");
