@@ -1,4 +1,7 @@
-import { getLocalStorage, alertMessage } from "./utils.mjs"
+import {
+    getLocalStorage, alertMessage,
+    removeAllAlerts
+} from "./utils.mjs"
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -109,18 +112,18 @@ export default class CheckoutProcess {
         } catch (err) {
             /*
             {
-            "name": "servicesError",
-            "message": {
-                "cardNumber": "Invalid Card Number",
-                "expiration": "Card expired"
-            }
+                "name": "servicesError",
+                "message": {
+                    "cardNumber": "Invalid Card Number",
+                    "expiration": "Card expired"
+                }
             }
             */
-            const messages = [];
-            console.log(err);
-            for (let [key, value] of Object.entries(err.message)) {
-                alertMessage(value);
+            removeAllAlerts();
+            for (let message in err.message) {
+                alertMessage(err.message[message]);
             }
+            console.log(err);
         }
     }
 }

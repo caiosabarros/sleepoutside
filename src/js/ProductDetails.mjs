@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs"
+import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs"
 
 function convertToJson(res) {
     if (res.ok) {
@@ -32,6 +32,7 @@ export default class ProductDetails {
 
     addProductToCart(product) {
         getLocalStorage("so-cart") === null ? setLocalStorage("so-cart", [{ product }]) : setLocalStorage("so-cart", [...getLocalStorage("so-cart"), { product }]);
+        alertMessage(`${this.product.NameWithoutBrand} was added to cart!`, false, true);
     }
 
     async getData() {
