@@ -60,6 +60,16 @@ export async function loadTemplate(path) {
   return template;
 }
 
+export function cartQuantityAndTotal(list) {
+  let totalPrice = 0;
+  let totalQuantity = 0;
+  list.forEach((product) => {
+    totalPrice += product.product.FinalPrice * product.quantity;
+    totalQuantity += product.quantity;
+  });
+  return { totalQuantity, totalPrice }
+}
+
 // dynamically load the header and footer
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partials/header.html");

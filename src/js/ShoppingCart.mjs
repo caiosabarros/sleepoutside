@@ -1,10 +1,11 @@
 import { getLocalStorage } from "./utils.mjs";
+import { cartQuantityAndTotal } from "./utils.mjs";
 
 function cartItemTemplate(cartItem) {
-    return `<li class="cart-card divider">
+  return `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${cartItem.product.Images.PrimaryMedium}"
+      src="${cartItem.product.Images.PrimaryMedium ?? cartItem.product.Image}"
       alt="${cartItem.product.Name}"
     />
   </a>
@@ -18,14 +19,17 @@ function cartItemTemplate(cartItem) {
 }
 
 export default class ShoppingCart {
-    constructor(key, parentSelector) {
-        this.key = key;
-        this.parentSelector = parentSelector;
-    }
+  constructor(key, parentSelector) {
+    this.key = key;
+    this.parentSelector = parentSelector;
+    this.list = [];
+  }
 
-    renderCartItems() {
-        const cartItems = getLocalStorage(this.key);
-        const builtItems = cartItems.map((item) => cartItemTemplate(item));
-        document.querySelector(this.parentSelector).innerHTML = builtItems.join("");
-    }
+  renderCartItems() {
+    this.list = getLocalStorage(this.key);
+    this.list = this.list.filter((item) => !(item.product.isTrusted == true));
+    const builtItems = this.list.map((item) => cartItemTemplate(item));
+    document.querySelector(this.parentSelector).innerHTML = builtItems.join("");
+  }
+
 }

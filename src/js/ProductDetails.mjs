@@ -1,3 +1,5 @@
+import { getLocalStorage, setLocalStorage } from "./utils.mjs"
+
 function convertToJson(res) {
     if (res.ok) {
         return res.json();

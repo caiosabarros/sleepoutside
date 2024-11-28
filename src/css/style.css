@@ -35,6 +35,10 @@ header {
   padding: 0 10px;
 }
 
+.submit-button {
+  margin: 5% 40% 5% 40%;
+}
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -270,6 +274,7 @@ button {
   display: flex;
   flex-direction: column;
 }
+
 
 @media screen and (min-width: 500px) {
   body {

@@ -9,7 +9,7 @@
 
   <title>Sleep Outside | Checkout</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 
   <script src="../js/checkout.js" type="module"></script>
 </head>
@@ -24,49 +24,55 @@
     <form id="checkout-form">
       <fieldset>
         <legend>Personal Information</legend>
-        <label for="firstname">First Name</label>
-        <input required name="firstname" />
-        <label for="lastname">Last Name</label>
-        <input required name="lastname" />
+        <label for="fname">First Name</label>
+        <input required name="fname" id="fname" />
+        <label for="lname">Last Name</label>
+        <input required name="lname" id="lname" />
       </fieldset>
       <fieldset>
+        <legend>Address</legend>
         <label for="street">Street Address</label>
-        <input required name="street" />
+        <input required name="street" id="street" />
         <label for="city">City</label>
-        <input required name="city" />
+        <input required name="city" id="city" />
         <label for="state">State</label>
         <input required name="state" />
         <label for="zip">ZIP Code</label>
-        <input required name="zip" />
-        <label for="ccnumber">Credit Card Number</label>
-        <input required name="ccnumber" />
+        <input required name="zip" id="zip" />
+        <label for="cardNumber">Credit Card Number</label>
+        <input required name="cardNumber" id="cardNumber" />
         <label for="expiration">Expiration Date</label>
-        <input required name="expiration" />
-        <label for="security">Security Code</label>
-        <input required name="security" />
+        <input required name="expiration" id="expiration" />
+        <label for="code">Security Code</label>
+        <input required name="code" id="code" />
       </fieldset>
       <fieldset class="checkout-summary">
         <legend>Order Summary</legend>
         <ul>
           <li>
-            <label for="checkout-subtotal"></label>
-            <p name="">Order Subtotal</p>
+            <!--the below is the subtotal and items quantity without taxes or shipping costs-->
+            <!-- <label for="checkout-subtotal">Order Subtotal</label> -->
+            <p id="checkout-subtotal"></p>
           </li>
           <li>
-            <label for="checkout-shipping">Shipping Estimate</label>
-            <p id=""></p>
+            <!-- <label for="checkout-items-quantity">Items Quantity</label> -->
+            <p id="checkout-items-quantity"></p>
           </li>
           <li>
-            <label for="checkout-tax">Tax</label>
-            <p id=""></p>
+            <!-- <label for="checkout-shipping">Shipping Estimate</label> -->
+            <p id="checkout-shipping"></p>
           </li>
           <li>
-            <label for="checkout-total"><strong>Order Total</strong></label>
-            <p id=""></p>
+            <!-- <label for="checkout-tax">Tax</label> -->
+            <p id="checkout-tax"></p>
+          </li>
+          <li>
+            <!-- <label for="checkout-total"><strong>Order Total</strong></label> -->
+            <p id="checkout-total"></p>
           </li>
         </ul>
       </fieldset>
-      <input type="submit" value="Make Order" />
+      <input id="checkout-submit" type="submit" value="Make Order" />
     </form>
 
   </main>
