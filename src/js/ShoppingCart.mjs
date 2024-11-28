@@ -27,9 +27,9 @@ export default class ShoppingCart {
 
   renderCartItems() {
     this.list = getLocalStorage(this.key);
-    this.list = this.list.filter((item) => !(item.product.isTrusted == true));
-    const builtItems = this.list.map((item) => cartItemTemplate(item));
-    document.querySelector(this.parentSelector).innerHTML = builtItems.join("");
+    this.list = this.list?.filter((item) => !(item.product.isTrusted == true));
+    const builtItems = this.list?.map((item) => cartItemTemplate(item));
+    document.querySelector(this.parentSelector).innerHTML = builtItems?.join("");
   }
 
 }

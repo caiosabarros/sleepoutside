@@ -275,6 +275,9 @@ button {
   flex-direction: column;
 }
 
+.redirect-button a {
+  text-decoration: none;
+}
 
 @media screen and (min-width: 500px) {
   body {

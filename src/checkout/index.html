@@ -38,13 +38,13 @@
         <label for="state">State</label>
         <input required name="state" />
         <label for="zip">ZIP Code</label>
-        <input required name="zip" id="zip" />
+        <input required name="zip" id="zip" pattern="\d+" />
         <label for="cardNumber">Credit Card Number</label>
         <input required name="cardNumber" id="cardNumber" />
         <label for="expiration">Expiration Date</label>
         <input required name="expiration" id="expiration" />
         <label for="code">Security Code</label>
-        <input required name="code" id="code" />
+        <input required name="code" id="code" minlength="3" />
       </fieldset>
       <fieldset class="checkout-summary">
         <legend>Order Summary</legend>
@@ -81,4 +81,3 @@
 </body>
 
 </html>
-
