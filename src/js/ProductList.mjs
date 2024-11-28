@@ -14,7 +14,7 @@ function productCardTemplate(product) {
   let cardElement = `          <li class="product-card">
           <a href="../product_pages/?product=${product.Id}">
             <img
-              src="${product.Images.PrimaryMedium ?? product.Image}"
+              src="${product.Images?.PrimaryMedium || product.Image}"
               alt="Image of ${product.Name}"
             />
             <h3 class="card__brand">${product.Brand.Name}</h3>
