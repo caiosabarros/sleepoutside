@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, getParams } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getParams, animateCart } from "./utils.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
@@ -13,6 +13,10 @@ function addProductToCart(product) {
   getLocalStorage("so-cart") === null
     ? setLocalStorage("so-cart", [{ product, quantity: 1 }])
     : addItemToNonEmptyCart(product);
+
+  // since this current fn always increases the quantity of products in the cart, it's the perfect
+  // place to add the animation
+  animateCart();
 }
 
 // increase the quantity of the item in the cart to avoid duplicates

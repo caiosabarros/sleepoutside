@@ -22,6 +22,18 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// animation on backpack for cart
+export function animateCart() {
+  const cartSvg = document.querySelector(".cart svg");
+  cartSvg.classList.add("animate");
+
+  // remove animation after half a second
+  setTimeout(() => {
+    cartSvg.classList.remove("animate");
+  }, 500);
+}
+
+
 export function getParams(param) {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
