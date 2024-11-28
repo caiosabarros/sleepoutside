@@ -14,12 +14,12 @@ function productCardTemplate(product) {
   let cardElement = `          <li class="product-card">
           <a href="../product_pages/?product=${product.Id}">
             <img
-              src="${product.Images.PrimaryMedium}"
+              src="${product.Images.PrimaryMedium ?? product.Image}"
               alt="Image of ${product.Name}"
             />
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.Name}</h2>
-            <p class="product-card__price">${product.FinalPrice}</p>
+            <p class="product-card__price">$${product.FinalPrice}</p>
           </a>
         </li>`;
   console.log(cardElement);
