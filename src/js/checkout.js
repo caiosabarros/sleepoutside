@@ -13,3 +13,4 @@ document.querySelector("#checkout-submit").addEventListener("click", (e) => {
 
     checkout.checkout();
 });
+
