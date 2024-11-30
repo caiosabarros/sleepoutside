@@ -8,7 +8,7 @@ cart.renderCartItems();
 const { totalPrice } = cartQuantityAndTotal(cart.list);
 
 const totalPriceSelector = document.querySelector("#total-price");
-totalPriceSelector.textContent = `Total Price: $${totalPrice}`;
+totalPriceSelector.textContent = `Total Price: $${(totalPrice).toFixed(2)}`;
 
 loadHeaderFooter();
 
